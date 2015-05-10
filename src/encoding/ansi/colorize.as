@@ -35,19 +35,19 @@ package encoding.ansi
      * @param c Variable arguments of ANSI codes.
      * @return A String with ANSI escape codes.
      */
-	public function colorize( str:String, ...c ):String
-	{
-		var s:String = "";
-		if( c.length > 0 )
-		{
-			for( var i:uint = 0; i < c.length; i++ )
-			{
-				s += c[i] ? c[i]: "";
-			}
+    public function colorize( str:String, ...c ):String
+    {
+        var s:String = "";
+        if( c.length > 0 )
+        {
+            for( var i:uint = 0; i < c.length; i++ )
+            {
+                s += c[i] ? c[i]: "";
+            }
 
-			return s + str + controls.reset;
-		}
+            return s + str + controls.reset;
+        }
 
-		return str;
-	}
+        return str;
+    }
 }

@@ -6,50 +6,50 @@ package encoding.ansi
     /**
      * ANSI background colors escape codes.
      */
-	public class backgrounds
-	{
+    public class backgrounds
+    {
 
-		//backgrounds
+        //backgrounds
         /** Black background color */
-		public static var black:String   = "\x1b[40m";
+        public static var black:String   = "\x1b[40m";
         /** Red background color */
-		public static var red:String     = "\x1b[41m";
+        public static var red:String     = "\x1b[41m";
         /** Green background color */
-		public static var green:String   = "\x1b[42m";
+        public static var green:String   = "\x1b[42m";
         /** Yellow background color */
-		public static var yellow:String  = "\x1b[43m";
+        public static var yellow:String  = "\x1b[43m";
         /** Blue background color */
-		public static var blue:String    = "\x1b[44m";
+        public static var blue:String    = "\x1b[44m";
         /** Magenta background color */
-		public static var magenta:String = "\x1b[45m";
+        public static var magenta:String = "\x1b[45m";
         /** Cyan background color */
-		public static var cyan:String    = "\x1b[46m";
+        public static var cyan:String    = "\x1b[46m";
         /** White background color */
-		public static var white:String   = "\x1b[47m";
+        public static var white:String   = "\x1b[47m";
 
-		//extra backgrounds
+        //extra backgrounds
         /** Bright Black background color */
-		public static var brightBlack:String   = "\x1b[100m";
+        public static var brightBlack:String   = "\x1b[100m";
         /** Bright Red background color */
-		public static var brightRed:String     = "\x1b[101m";
+        public static var brightRed:String     = "\x1b[101m";
         /** Bright Green background color */
-		public static var brightGreen:String   = "\x1b[102m";
+        public static var brightGreen:String   = "\x1b[102m";
         /** Bright Yellow background color */
-		public static var brightYellow:String  = "\x1b[103m";
+        public static var brightYellow:String  = "\x1b[103m";
         /** Bright Blue background color */
-		public static var brightBlue:String    = "\x1b[104m";
+        public static var brightBlue:String    = "\x1b[104m";
         /** Bright Magenta background color */
-		public static var brightMagenta:String = "\x1b[105m";
+        public static var brightMagenta:String = "\x1b[105m";
         /** Bright Cyan background color */
-		public static var brightCyan:String    = "\x1b[106m";
+        public static var brightCyan:String    = "\x1b[106m";
         /** Bright White background color */
-		public static var brightWhite:String   = "\x1b[107m";
+        public static var brightWhite:String   = "\x1b[107m";
 
         /**
          * Returns an array of all background colors.
          */
-		public static function all():Array
-		{
+        public static function all():Array
+        {
             var _class:XML = describeType( backgrounds );
             
             var categories:Array = [];
@@ -60,11 +60,11 @@ package encoding.ansi
             Program.disposeXML( _class );
             
             return categories;
-		}
+        }
 
-		public function backgrounds()
-		{
-			super();
-		}
-	}
+        public function backgrounds()
+        {
+            super();
+        }
+    }
 }

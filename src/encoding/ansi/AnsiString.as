@@ -77,45 +77,45 @@ package encoding.ansi
     public class AnsiString
     {
         
-		public static var before:String = "「";
-		public static var after:String  = "」";
+        public static var before:String = "「";
+        public static var after:String  = "」";
 
-		public static var map:Object = new Object();
-						  map[ "!" ] = controls.bold;
-						  map[ "_" ] = controls.underline;
-						  map[ "*" ] = controls.flash;
-						  map[ "i" ] = controls.invert;
-						  map[ "?" ] = controls.conceal;
-						  map[ "k" ] = colors.black;
-						  map[ "r" ] = colors.red;
-						  map[ "g" ] = colors.green;
-						  map[ "y" ] = colors.yellow;
-						  map[ "b" ] = colors.blue;
-						  map[ "m" ] = colors.magenta;
-						  map[ "c" ] = colors.cyan;
-						  map[ "w" ] = colors.white;
-						  map[ "K" ] = colors.brightBlack;
-						  map[ "R" ] = colors.brightRed;
-						  map[ "G" ] = colors.brightGreen;
-						  map[ "Y" ] = colors.brightYellow;
-						  map[ "B" ] = colors.brightBlue;
-						  map[ "M" ] = colors.brightMagenta;
-						  map[ "C" ] = colors.brightCyan;
-						  map[ "W" ] = colors.brightWhite;
-						  map[ "0" ] = backgrounds.black;
-						  map[ "1" ] = backgrounds.red;
-						  map[ "2" ] = backgrounds.green;
-						  map[ "3" ] = backgrounds.yellow;
-						  map[ "4" ] = backgrounds.blue;
-						  map[ "5" ] = backgrounds.magenta;
-						  map[ "6" ] = backgrounds.cyan;
-						  map[ "7" ] = backgrounds.white;
+        public static var map:Object = new Object();
+                          map[ "!" ] = controls.bold;
+                          map[ "_" ] = controls.underline;
+                          map[ "*" ] = controls.flash;
+                          map[ "i" ] = controls.invert;
+                          map[ "?" ] = controls.conceal;
+                          map[ "k" ] = colors.black;
+                          map[ "r" ] = colors.red;
+                          map[ "g" ] = colors.green;
+                          map[ "y" ] = colors.yellow;
+                          map[ "b" ] = colors.blue;
+                          map[ "m" ] = colors.magenta;
+                          map[ "c" ] = colors.cyan;
+                          map[ "w" ] = colors.white;
+                          map[ "K" ] = colors.brightBlack;
+                          map[ "R" ] = colors.brightRed;
+                          map[ "G" ] = colors.brightGreen;
+                          map[ "Y" ] = colors.brightYellow;
+                          map[ "B" ] = colors.brightBlue;
+                          map[ "M" ] = colors.brightMagenta;
+                          map[ "C" ] = colors.brightCyan;
+                          map[ "W" ] = colors.brightWhite;
+                          map[ "0" ] = backgrounds.black;
+                          map[ "1" ] = backgrounds.red;
+                          map[ "2" ] = backgrounds.green;
+                          map[ "3" ] = backgrounds.yellow;
+                          map[ "4" ] = backgrounds.blue;
+                          map[ "5" ] = backgrounds.magenta;
+                          map[ "6" ] = backgrounds.cyan;
+                          map[ "7" ] = backgrounds.white;
                         //map[ " " ] = will set ignoreSpace = false 
         
-		public var source:String;
-		public var symbols:Object = AnsiString.map;
+        public var source:String;
+        public var symbols:Object = AnsiString.map;
 
-		public var ignoreSpace:Boolean = true;
+        public var ignoreSpace:Boolean = true;
         
         /**
          * Build an ANSI string based on the ANSI "notation".
@@ -126,210 +126,210 @@ package encoding.ansi
             this.source = source;
         }
         
-		private function _getSymbols( args:Array ):Array
-		{
-			var csymbols:Array = [];
-			var i:uint;
-			var len:uint = args.length;
-			for( i = 0; i < len; i++ )
-			{
-				csymbols.push( this.symbols[ args[i] ] );
-			}
+        private function _getSymbols( args:Array ):Array
+        {
+            var csymbols:Array = [];
+            var i:uint;
+            var len:uint = args.length;
+            for( i = 0; i < len; i++ )
+            {
+                csymbols.push( this.symbols[ args[i] ] );
+            }
 
-			return csymbols;
-		}
+            return csymbols;
+        }
         
-		private function _translateLine( raw:String ):String
-		{
-			raw += before + after;
+        private function _translateLine( raw:String ):String
+        {
+            raw += before + after;
 
-			var str:String = "";
-			var re:RegExp = new RegExp( "(?P<word>.*?)" + "\\" + before + "(?P<ansi>.*?)" + "\\" + after , "g" );
-			var match:*;
-			
-			while( match = re.exec( raw ) )
-			{
-				if( match.ansi != "" )
-				{
-					var space:Boolean = this.ignoreSpace;
-					if( match.ansi.indexOf( " " ) > -1 )
-					{
-						space = false;
-						match.ansi = match.ansi.split( " " ).join( "" );
-					}
-					var params:Array = match.ansi.split( "" );
-					var pos:int = match.word.lastIndexOf( " " );
+            var str:String = "";
+            var re:RegExp = new RegExp( "(?P<word>.*?)" + "\\" + before + "(?P<ansi>.*?)" + "\\" + after , "g" );
+            var match:*;
+            
+            while( match = re.exec( raw ) )
+            {
+                if( match.ansi != "" )
+                {
+                    var space:Boolean = this.ignoreSpace;
+                    if( match.ansi.indexOf( " " ) > -1 )
+                    {
+                        space = false;
+                        match.ansi = match.ansi.split( " " ).join( "" );
+                    }
+                    var params:Array = match.ansi.split( "" );
+                    var pos:int = match.word.lastIndexOf( " " );
 
-					if( space && (pos > -1) )
-					{
-						str += match.word.substr( 0, pos+1 );
-						str += colorizeWith( match.word.substr( pos+1 ) , _getSymbols( params ) );
-					}
-					else
-					{
-						str += colorizeWith( match.word, _getSymbols( params ) );
-					}
-				}
-				else
-				{
-					str += match.word;
-				}
-			}
+                    if( space && (pos > -1) )
+                    {
+                        str += match.word.substr( 0, pos+1 );
+                        str += colorizeWith( match.word.substr( pos+1 ) , _getSymbols( params ) );
+                    }
+                    else
+                    {
+                        str += colorizeWith( match.word, _getSymbols( params ) );
+                    }
+                }
+                else
+                {
+                    str += match.word;
+                }
+            }
 
-			return str;
-		}
+            return str;
+        }
         
-		private function _translate( raw:String ):String
-		{
-			if( raw.indexOf( "\n" ) > -1 )
-			{
-				var lines:Array = raw.split( "\n" );
-				var i:uint;
-				var len:uint = lines.length;
-				for( i = 0; i < len; i++ )
-				{
-					lines[i] = _translateLine( lines[i] );
-				}
-				return lines.join( "\n" );
-			}
-			else
-			{
-				return _translateLine( raw );
-			}
-		}
+        private function _translate( raw:String ):String
+        {
+            if( raw.indexOf( "\n" ) > -1 )
+            {
+                var lines:Array = raw.split( "\n" );
+                var i:uint;
+                var len:uint = lines.length;
+                for( i = 0; i < len; i++ )
+                {
+                    lines[i] = _translateLine( lines[i] );
+                }
+                return lines.join( "\n" );
+            }
+            else
+            {
+                return _translateLine( raw );
+            }
+        }
         
         /**
          * Utility method to alternate the ANSI sequence per letter.
          */
-		public function altLetter( seq1:String, seq2:String ):void
-		{
-			var s1:String = before + seq1 + after;
-			var s2:String = before + seq2 + after;
+        public function altLetter( seq1:String, seq2:String ):void
+        {
+            var s1:String = before + seq1 + after;
+            var s2:String = before + seq2 + after;
 
-			var newsrc:String = "";
-			var i:uint;
-			var len:uint = this.source.length;
-			var seq:String = s1;
-			var c:String;
-			for( i = 0; i < len; i++ )
-			{
-				c = this.source.charAt(i);
-				switch( c )
-				{
-					case " ":
-					case "\n":
-					case "\r":
-					newsrc += c;
-					continue;
-					break;
+            var newsrc:String = "";
+            var i:uint;
+            var len:uint = this.source.length;
+            var seq:String = s1;
+            var c:String;
+            for( i = 0; i < len; i++ )
+            {
+                c = this.source.charAt(i);
+                switch( c )
+                {
+                    case " ":
+                    case "\n":
+                    case "\r":
+                    newsrc += c;
+                    continue;
+                    break;
 
-					default:
-					newsrc += c + seq;
-					seq = (seq == s1) ? s2: s1;
-				}
-			}
+                    default:
+                    newsrc += c + seq;
+                    seq = (seq == s1) ? s2: s1;
+                }
+            }
 
-			this.source = newsrc;
-		}
+            this.source = newsrc;
+        }
         
         /**
          * Utility method to alternate the ANSI sequence per word.
          */
-		public function altWord( seq1:String, seq2:String ):void
-		{
-			var s1:String = before + seq1 + after;
-			var s2:String = before + seq2 + after;
+        public function altWord( seq1:String, seq2:String ):void
+        {
+            var s1:String = before + seq1 + after;
+            var s2:String = before + seq2 + after;
 
-			var newsrc:String = "";
-			var i:uint;
-			var len:uint = this.source.length;
-			var seq:String = s1;
-			var c:String;
-			var l:String;
-			for( i = 0; i < len; i++ )
-			{
-				c = this.source.charAt(i);
-				switch( c )
-				{
-					case "\n":
-					case "\r":
-					newsrc += c;
-					//continue;
-					break;
+            var newsrc:String = "";
+            var i:uint;
+            var len:uint = this.source.length;
+            var seq:String = s1;
+            var c:String;
+            var l:String;
+            for( i = 0; i < len; i++ )
+            {
+                c = this.source.charAt(i);
+                switch( c )
+                {
+                    case "\n":
+                    case "\r":
+                    newsrc += c;
+                    //continue;
+                    break;
 
-					case " ":
-					newsrc += c;
-					//continue;
-					break;
+                    case " ":
+                    newsrc += c;
+                    //continue;
+                    break;
 
-					default:
-					if( l == " " )
-					{
-						seq = (seq == s1) ? s2: s1;	
-					}
-					newsrc += c + seq;
-				}
-				l = c;
-			}
+                    default:
+                    if( l == " " )
+                    {
+                        seq = (seq == s1) ? s2: s1;    
+                    }
+                    newsrc += c + seq;
+                }
+                l = c;
+            }
 
-			this.source = newsrc;
-		}
+            this.source = newsrc;
+        }
         
         /**
          * Utility method to alternate the ANSI sequence per line.
          */
-		public function altLine( seq1:String, seq2:String ):void
-		{
-			if( seq1.indexOf( " " ) < 0 ) { seq1 += " "; }
+        public function altLine( seq1:String, seq2:String ):void
+        {
+            if( seq1.indexOf( " " ) < 0 ) { seq1 += " "; }
 
-			if( seq2.indexOf( " " ) < 0 ) { seq2 += " "; }
+            if( seq2.indexOf( " " ) < 0 ) { seq2 += " "; }
 
-			var s1:String = before + seq1 + after;
-			var s2:String = before + seq2 + after;
+            var s1:String = before + seq1 + after;
+            var s2:String = before + seq2 + after;
 
-			var newsrc:String = "";
-			var i:uint;
-			var len:uint = this.source.length;
-			var seq:String = s1;
-			var c:String;
-			var end:String = "";
-			for( i = 0; i < len; i++ )
-			{
-				c = this.source.charAt(i);
-				
-				switch( c )
-				{
-					case " ":
-					case "\r":
-					newsrc += c;
-					continue;
-					break;
+            var newsrc:String = "";
+            var i:uint;
+            var len:uint = this.source.length;
+            var seq:String = s1;
+            var c:String;
+            var end:String = "";
+            for( i = 0; i < len; i++ )
+            {
+                c = this.source.charAt(i);
+                
+                switch( c )
+                {
+                    case " ":
+                    case "\r":
+                    newsrc += c;
+                    continue;
+                    break;
 
-					case "\n":
-					seq = (seq == s1) ? s2: s1;
-					newsrc += seq + c;
-					continue;
-					break;
+                    case "\n":
+                    seq = (seq == s1) ? s2: s1;
+                    newsrc += seq + c;
+                    continue;
+                    break;
 
-					default:
-					newsrc += c;
-				}
+                    default:
+                    newsrc += c;
+                }
 
-			}
+            }
 
-			seq = (seq == s1) ? s2: s1;
-			this.source = newsrc + seq;
-		}
+            seq = (seq == s1) ? s2: s1;
+            this.source = newsrc + seq;
+        }
         
         /**
          * Returns a string with ANSI escape codes.
          */
-		public function toString():String
-		{
-			var str:String = "";
-				str += _translate( this.source );
-			return str;
-		}
+        public function toString():String
+        {
+            var str:String = "";
+                str += _translate( this.source );
+            return str;
+        }
         
         /**
          * Returns a string with ANSI escape codes.
