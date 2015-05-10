@@ -96,3 +96,7 @@ trace( "----" );
 trace( "" );
 
 ```
+
+It will look like this
+
+![screenshot](corsaair.github.com/ansilib/img/screenshot.png)
