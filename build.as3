@@ -1,0 +1,11 @@
+import redbean.*;
+import shell.FileSystem;
+
+compile( "src/ansilib.as" );
+
+if( FileSystem.exists( "ansilib.abc" ) )
+{
+	FileSystem.removeFile( "ansilib.abc" );
+}
+
+FileSystem.move( "src/ansilib.abc", "ansilib.abc" );
