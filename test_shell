@@ -1,0 +1,62 @@
+#!/usr/bin/as3shebang -- 
+
+import shell.*;
+
+var ansilib:* = Domain.currentDomain.load( "ansilib.abc" );
+trace( ansilib + " loaded" );
+
+import encoding.ansi.*;
+
+var hello:* = new AnsiString( "hello world「Y!* 」" );
+trace( hello );
+
+var foobar:* = new AnsiString( "Hello World" );
+    foobar.altLetter( "b", "w" );
+trace( foobar );
+
+var barfoo:* = new AnsiString( "hello world" );
+    barfoo.altWord( "G", "R" );
+trace( barfoo );
+
+var logo:String = "";
+    logo += "\n";
+    logo += "           █                                                                       \n";
+    logo += "      █████              █    ██                █     █              ██      █     \n";
+    logo += "      ██ ██     █       ██ ███████   ██  █              █  █     ██                \n";
+    logo += "   █ ██   ██  █████  █████ ███████  ██████   █  ████  ██████ █  ████ ██   ████     \n";
+    logo += "    ███   █  ██  ██ ██ ███    █    ██  ███  █████  █  █   ██ ████    █ ████  ██    \n";
+    logo += "    ███████ ███████ █   ██    █    ██   ██ ██ ███  ████   ██  ██     █  ██    █    \n";
+    logo += "     ████   ████    █   ██    █    ██   ██ ██  █   ████   ██  ██     █  ██ █  ██   \n";
+    logo += "     ██ ███  ████ █ ██████    ██   ███████ ██  █ █ ██ ██████   █     █  ██    ██   \n";
+    logo += "      █  ██   ████   █████ █  ██    ████ █  █  █   ██  ███ █   █   █ █        ██   \n";
+    logo += "        █                                                                          ";
+
+var redtamarin:* = new AnsiString( logo );
+    redtamarin.altLine( "M", "C" );
+trace( redtamarin );
+
+
+var logo2:String = "";
+    logo2 += "\n";
+    logo2 += "           █「R 」                                                                       \n";
+    logo2 += "      █████              █「R 」    ██                █     █              ██      █     「Y 」\n";
+    logo2 += "      ██ ██     █       ██「R 」 ███████   ██  █              █  █     ██                「y 」\n";
+    logo2 += "   █ ██   ██  █████  █████「R 」 ███████  ██████   █  ████  ██████ █  ████ ██   ████     「Y 」\n";
+    logo2 += "    ███   █  ██  ██ ██ ███「R 」    █    ██  ███  █████  █  █   ██ ████    █ ████  ██    「y 」\n";
+    logo2 += "    ███████ ███████ █   ██「R 」    █    ██   ██ ██ ███  ████   ██  ██     █  ██    █    「Y 」\n";
+    logo2 += "     ████   ████    █   ██「R 」    █    ██   ██ ██  █   ████   ██  ██     █  ██ █  ██   「y 」\n";
+    logo2 += "     ██ ███  ████ █ ██████「R 」    ██   ███████ ██  █ █ ██ ██████   █     █  ██    ██   「Y 」\n";
+    logo2 += "      █  ██   ████   █████ █「R 」  ██    ████ █  █  █   ██  ███ █   █   █ █        ██   「y 」\n";
+    logo2 += "        █「R 」                                                                             ";
+
+var ansi_logo2:* = new AnsiString( logo2 );
+trace( ansi_logo2 );
+
+var message:String = "";
+    message += "Mission Statement「W!_ 」\n";
+    message += "To support the use of the 「K 」AS3 language「Y! 」 for 「K 」cross-platform「R 」 command-line「M 」 executable「G 」,「K 」\n";
+    message += "as 「K 」single exe「r_ 」 either for the「K 」 desktop「G7i」 or「Ki」 the「K 」 server「R7i」,「K 」\n";
+    message += "as 「K 」scripts「b* 」 for 「K 」automation「y_」,「K 」\n";
+    message += "as 「K 」tools「B7!i 」 for the 「K 」Flash Platform「W!1 」 community「W!」.「K 」\n";
+trace( new AnsiString( message ) );
+

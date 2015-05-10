@@ -1,7 +1,7 @@
 ansilib
 =======
 
-A basic library to encode strings with ANSI escape codes
+A basic library to encode strings with [ANSI escape codes](http://en.wikipedia.org/wiki/ANSI_escape_code)
 to provide colors output in the terminal (Linux and Mac OS X).
 
 Install
