@@ -85,13 +85,13 @@ function testBackgrounds():void
 
 trace( "----" );
 trace( "colors:" );
-testColors( "hello world" );
+testColors();
 trace( "----" );
 trace( "" );
 
 trace( "----" );
 trace( "backgrounds:" );
-testBackgrounds( "hello world" );
+testBackgrounds();
 trace( "----" );
 trace( "" );
 
