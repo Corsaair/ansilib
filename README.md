@@ -100,3 +100,8 @@ trace( "" );
 It will look like this
 
 ![screenshot](img/screenshot.png)
+
+More examples
+![examples](img/examples.png)
+
+See the wiki for the [ANSI notation](https://github.com/Corsaair/ansilib/wiki/ANSI_notation).
