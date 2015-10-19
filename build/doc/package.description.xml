@@ -1,0 +1,26 @@
+<overviews>
+	<all-packages>
+		<description><![CDATA[
+			The &lt;b&gt;ANSI&lt;/b&gt; library.&lt;br&gt;
+			&lt;br&gt;
+			A basic library to encode strings with ANSI escape codes
+            to provide colors output in the terminal (Linux and Mac OS X).
+			&lt;br&gt;
+			&lt;br&gt;
+			&lt;b&gt;Windows is not supported yet.&lt;/b&gt;
+			&lt;br&gt;
+			&lt;br&gt;
+			&lt;a href="https://github.com/Corsaair/ansilib/wiki" target="_blank"&gt;Wiki Documentation&lt;/a&gt;
+		]]></description>
+	</all-packages>
+	<packages>
+
+		<package name="encoding.ansi" >
+			<shortDescription><![CDATA[The ANSI library.]]></shortDescription>
+			<description><![CDATA[
+				All interfaces, classes, etc. for delaing with ANSI escape codes.
+			]]></description>
+		</package>
+		
+	</packages>
+</overviews>
