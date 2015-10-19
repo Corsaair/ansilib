@@ -1,3 +1,7 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 package encoding.ansi
 {
     /**
@@ -6,6 +10,10 @@ package encoding.ansi
      * <p>
      * Allow to parse a string containing "ANSI notation"
      * to a string with ANSI escape codes.
+     * </p>
+     * 
+     * <p>
+     * The ANSI notation is a bit like the markdown of the ANSI strings.
      * </p>
      * 
      * <p>
@@ -33,8 +41,6 @@ package encoding.ansi
      * The ANSI code sequences are contained within <code>「</code> and <code>」</code>,
      * and inside those separators, one character is equivalent to an ANSI escape code:
      * <code>k</code> for <code>colors.black</code>, <code>!</code> for <code>controls.bold</code>, etc.
-     * 
-     * The ANSI notation is a bit like the markdown of the ANSI strings.
      * 
      * Here the mapping of those characters:
      * </p>
@@ -73,7 +79,11 @@ package encoding.ansi
      * <tr><td><b>7</b></td><td><code>backgrounds.white</code></td></tr>
      * </table>
      * 
-     */ 
+     * @playerversion AVM 0.4
+     * @langversion 3.0
+     * 
+     * @see http://github.com/Corsaair/ansilib/wiki/ANSI_notation ANSI notation
+     */
     public class AnsiString
     {
         
